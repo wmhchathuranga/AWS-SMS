@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +46,7 @@
             </div>
 
             <div class="row">
-                <p class="text-center text-secondary opacity-50" style="font-size: small;">Please enter code send<br> to <span class="text-success fw-bold">0787651416</span> </p>
+                <p class="text-center text-secondary opacity-50" style="font-size: small;">Please enter code send<br> to <span class="text-success fw-bold"><?php echo $_SESSION["tell"]; ?></span> </p>
             </div>
 
             <div class="row mb-3">

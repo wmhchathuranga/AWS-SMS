@@ -10,9 +10,28 @@ intlTelInput(input, {
 });
 
 
+var cCode = +94 ;
+
+
 function send(){
- var number1 = document.getElementById("phone").value;
+ var tell = document.getElementById("phone").value;
 
- alert(number1);
+//  const digit = Math.floor(100000 + Math.random() * 900000);
 
+ var form = new FormData();
+ form.append("tell", tell);
+//  form.append("digit",digit);
+
+ var request = new XMLHttpRequest();
+ request.onreadystatechange = function(){
+  if(request.readyState==4 && request.status==200){
+    alert(request.responseText);
+    window.location= "otpPage.php";
+  }
+ }
+ request.open("POST","otpGenerate.php",true);
+ request.send(form);
+
+
+ 
 }
