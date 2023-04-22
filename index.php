@@ -44,7 +44,7 @@
 
             <div class="row justify-content-center align-items-center mb-3 gap-1">
                 <div class="col-auto px-0">
-                    <input class="input1 " type="text" id="phone" />
+                    <input class="input1 " type="text" id="phone" placeholder="+94787892654"/>
                 </div>
 
                 <div class="col-auto px-0 ">
