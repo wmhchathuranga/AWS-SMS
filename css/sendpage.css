@@ -1,0 +1,46 @@
+*{
+    /* border: solid 1px black; */
+}
+
+.background{
+    background-color: #685ff4;
+}
+
+.box{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.img1{
+    background-image: url('./images/vecteezy_phone-message-notification-receive-authentication-code_22318376.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.input1{
+    background-color: #a4dbbb5c ;
+    box-shadow: none  !important;
+    border: none;
+    border-radius: 3px;
+    height: 35px;
+}
+
+.sendBtn{
+    border: none;
+    color: white;
+    height: 35px;
+    border-radius: 3px;
+    background: rgb(125,249,182);
+    background: linear-gradient(93deg, rgba(125,249,182,1) 0%, #26c66d 100%); 
+    transition: 0.3s;
+}
+
+.sendBtn:hover{
+    /* opacity: 0.6; */
+    /* color:rgba(125,249,182,1);
+    background: rgba(26, 26, 26, 0.493);
+    background: linear-gradient(93deg, rgba(17, 17, 17, 0.662) 0%, rgba(2, 94, 43, 0.689) 100%);  */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    scale: 1.05;
+}

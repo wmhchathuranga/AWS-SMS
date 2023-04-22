@@ -1,0 +1,39 @@
+.phone-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  #phone {
+    padding: 12px 48px 12px 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+  }
+  #flag-container {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+  #send-button {
+    margin-top: 16px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  #send-button:hover {
+    background-color: #0069d9;
+  }
