@@ -13,11 +13,12 @@ iti.setFlagContainer(flagContainer);
 
 // Add an event listener to the send button
 var sendButton = document.querySelector("#send-button");
-sendButton.addEventListener("click", function() {
+sendButton.addEventListener("click", function () {
   // Get the input value and selected country code number
   var phoneNumber = input.value;
   var countryCode = iti.getSelectedCountryData().dialCode;
-  
+
   // Alert the values
   alert("Phone number: " + phoneNumber + "\nCountry code: " + countryCode);
 });
+
