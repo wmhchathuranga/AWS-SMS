@@ -51,3 +51,10 @@
 .resendBtn:hover {
     color: rgb(6, 137, 67);
 }
+
+.errorMsg_1{
+    color: #26c66d !important;
+}
+.errorMsg_2{
+    color: #f55b5b !important;
+}
