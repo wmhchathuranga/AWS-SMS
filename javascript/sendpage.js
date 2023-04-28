@@ -67,24 +67,22 @@ function send() {
         // alert(request.responseText);
 
         setTimeout(locationChange, 1000);
-      } else {
-        if (
-          request.responseText ==
-          "You have reached the maximum amount of SMS codes to send. Please try again in 1 hour. If you are still experiencing issues, please contact support."
-        ) {
+      } else if ( request.responseText == "You have reached the maximum amount of SMS codes to send. Please try again in 1 hour. If you are still experiencing issues, please contact support.")  {
           document.getElementById("sendBtn").style.background = "red";
           document.getElementById("errorMsgRow").style.display = "block";
           document.getElementById("errorMsg").innerHTML = request.responseText;
           // alert(request.responseText);
-        } else {
+        } else if(request.responseText == "This number has been previously used before. You can only have one TimeBucks account. If you think this is an error, please contact support.") {
           document.getElementById("errorMsgRow").style.display = "block";
-          document.getElementById("errorMsg").innerHTML =
-            "It looks like you signed up to TimeBucks from [United States], but you are trying to verify with a mobile number from ]. You should live in the country that you signed up with. If you think this is wrong, or if you have recently moved countries, please contact support.";
+          document.getElementById("errorMsg").innerHTML = request.responseText;
           // alert(request.responseText);
+        }else if(request.responseText=="It looks like you signed up to TimeBucks from [United States], but you are trying to verify with a mobile number from ]. You should live in the country that you signed up with. If you think this is wrong, or if you have recently moved countries, please contact support."){
+          document.getElementById("errorMsgRow").style.display = "block";
+          document.getElementById("errorMsg").innerHTML = request.responseText;
         }
       }
     }
-  };
+
   request.open("POST", "sendProcess.php", true);
   request.send(form);
 }
