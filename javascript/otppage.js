@@ -39,7 +39,7 @@ function reSend(){
       if(request.responseText=="success"){
         otp.style.color="#26c66d";
         errorMsg.classList.add("errorMsg_1");
-        errorMsg.innerHTML="verification successful";
+        errorMsg.innerHTML="";
         alert("Resent verification code. please check your SMS");
       
       }else{

@@ -14,16 +14,31 @@ $current_time = (date("Y-m-d H:i:s", $time));
 
 
 
-$t =  Database::search("SELECT * FROM `record` WHERE `user_id`='" . $user_id . "' AND `mobile_number`='" . $tell . "' ORDER BY `id` DESC ");
-$last_record = $t->fetch_assoc();
 
-if ($t->num_rows >= 5) {
+//secure query update//
+Database::setUpConnection();
+
+$query_1 = "SELECT * FROM `record` WHERE `user_id`=? AND `mobile_number`=? ORDER BY `id` DESC ";
+$stmt_1 = Database::$connection->prepare($query_1);
+$stmt_1->bind_param("is", $user_id, $tell);
+$stmt_1->execute();
+$result_1 = $stmt_1->get_result();
+$last_record = $result_1->fetch_assoc();
+//secure query update//
+
+
+
+
+// $t =  Database::search("SELECT * FROM `record` WHERE `user_id`='" . $user_id . "' AND `mobile_number`='" . $tell . "' ORDER BY `id` DESC ");
+// $last_record = $t->fetch_assoc();
+
+if ($result_1->num_rows >= 5) {
 
     // Move the result pointer to the 5th row
-    mysqli_data_seek($t, 4);
+    mysqli_data_seek($result_1, 4);
 
     // Fetch the 5th row
-    $fifth_record = $t->fetch_assoc();
+    $fifth_record = $result_1->fetch_assoc();
 
     $phpdate_5 = strtotime($fifth_record['created_time']);
     $created_time_5 = date('Y-m-d H:i:s', $phpdate_5);
@@ -36,8 +51,17 @@ if ($t->num_rows >= 5) {
         //digit...
         $digit = random_int(100000, 999999);
 
-        // record, digit save our database temporarlis
-        Database::iud("INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES ('" . $user_id . "','" . $tell . "','" . $digit . "','" . $current_time . "') ");
+
+        //secure query update//
+        $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
+        $stmt_2 = Database::$connection->prepare($query_2);
+        $stmt_2->bind_param("isis", $user_id, $tell, $digit, $current_time);
+        $stmt_2->execute();
+        //secure query update//
+
+
+        // // record, digit save our database 
+        // Database::iud("INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES ('" . $user_id . "','" . $tell . "','" . $digit . "','" . $current_time . "') ");
 
         echo "success";
     }
@@ -45,8 +69,16 @@ if ($t->num_rows >= 5) {
     //digit...
     $digit = random_int(100000, 999999);
 
-    // record, digit save our database temporarlis
-    Database::iud("INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES ('" . $user_id . "','" . $tell . "','" . $digit . "','" . $current_time . "') ");
+    //secure query update//
+    $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
+    $stmt_2 = Database::$connection->prepare($query_2);
+    $stmt_2->bind_param("isis", $user_id, $tell, $digit, $current_time);
+    $stmt_2->execute();
+    //secure query update//
+
+
+    // // record, digit save our database 
+    // Database::iud("INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES ('" . $user_id . "','" . $tell . "','" . $digit . "','" . $current_time . "') ");
 
     echo "success";
 }
