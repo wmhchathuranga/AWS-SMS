@@ -32,7 +32,7 @@ $last_record = $result_1->fetch_assoc();
 // $t =  Database::search("SELECT * FROM `record` WHERE `user_id`='" . $user_id . "' AND `mobile_number`='" . $tell . "' ORDER BY `id` DESC ");
 // $last_record = $t->fetch_assoc();
 
-if ($result_1->num_rows >= 5) {
+if ($result_1->num_rows >= 7) {
 
     // Move the result pointer to the 5th row
     mysqli_data_seek($result_1, 4);
@@ -45,13 +45,16 @@ if ($result_1->num_rows >= 5) {
 
     $time_end_5 = date('Y-m-d H:i:s', strtotime($current_time . ' -1 hours'));
 
-    if ($time_end_5 < $created_time_5) {
+    if ($time_end_5 > $created_time_5) {
         echo "You have reached the maximum amount of SMS codes to send. Please try again in 1 hour. If you are still experiencing issues, please contact support.";
     } else {
         //digit...
         $digit = random_int(100000, 999999);
+        $dest = str_replace("+", "", $tell);
+        $url = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$dest&msg=$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
+        // $url = 'https://nie.lk/pdffiles/tg/AL_Syl%20Physics.pdf';
 
-
+        $res = file_get_contents($url);
         //secure query update//
         $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
         $stmt_2 = Database::$connection->prepare($query_2);
@@ -69,6 +72,9 @@ if ($result_1->num_rows >= 5) {
     //digit...
     $digit = random_int(100000, 999999);
 
+    $desc = str_replace("+", "", $tell);
+    $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
+    $res = file_get_contents($request);
     //secure query update//
     $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
     $stmt_2 = Database::$connection->prepare($query_2);

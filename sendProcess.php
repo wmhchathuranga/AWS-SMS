@@ -91,7 +91,9 @@ if ($user_status_t->num_rows > 0) {
                 echo "You have reached the maximum amount of SMS codes to send. Please try again in 1 hour. If you are still experiencing issues, please contact support.";
             } else {
                 $digit = random_int(100000, 999999);
-
+                $desc = str_replace("+", "", $tell);
+                $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
+                $res = file_get_contents($request);
 
                 //secure query update//
                 $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
@@ -110,7 +112,9 @@ if ($user_status_t->num_rows > 0) {
         } else {
             $digit = random_int(100000, 999999);
 
-
+            $desc = str_replace("+", "", $tell);
+            $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
+            $res = file_get_contents($request);
             //secure query update//
             $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
             $stmt_2 = Database::$connection->prepare($query_2);
