@@ -21,7 +21,7 @@ $country_code = $_POST["country_code"];
 //secure query update//
 Database::setUpConnection();
 
-$query_1 = "SELECT * FROM `user_status` WHERE `verified_mobile`=? ";
+$query_1 = "SELECT * FROM `user_status` WHERE `verified_mobile`=? and `is_verified` = 1";
 $stmt_1 = Database::$connection->prepare($query_1);
 $stmt_1->bind_param("s", $tell);
 $stmt_1->execute();
@@ -92,7 +92,7 @@ if ($user_status_t->num_rows > 0) {
             } else {
                 $digit = random_int(100000, 999999);
                 $desc = str_replace("+", "", $tell);
-                $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
+                $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=Your%20Timebucks%20OTP%20:%20$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
                 $res = file_get_contents($request);
 
                 //secure query update//
@@ -113,7 +113,7 @@ if ($user_status_t->num_rows > 0) {
             $digit = random_int(100000, 999999);
 
             $desc = str_replace("+", "", $tell);
-            $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
+            $request = "https://smsc.txtnation.com:8093/sms/send_sms.php?dst=$desc&msg=Your%20Timebucks%20OTP%20:%20$digit&dr=0&type=0&src=Timebucks&user=timebucks&password=jninXiV9";
             $res = file_get_contents($request);
             //secure query update//
             $query_2 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";

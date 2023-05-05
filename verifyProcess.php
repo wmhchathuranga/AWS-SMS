@@ -64,21 +64,3 @@ if ($otp == $last_record['verification_code']) {
 
 
 
-
-// if ($otp == $last_record['verification_code']) {
-
-//     $phpdate = strtotime($last_record['created_time']);
-//     $created_time = date('Y-m-d H:i:s', $phpdate);
-
-//     $current_time = date('Y-m-d H:i:s', time());
-
-//     $time_end = date('Y-m-d H:i:s', strtotime($current_time . ' -3 minutes'));
-
-//     if ($time_end < $created_time) {
-//         echo "success";
-//     } else {
-//         echo "This code has expired. Please click the Resend button to send a new one.";
-//     }
-// } else {
-//     echo "Invalid OTP";
-// }
