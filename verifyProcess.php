@@ -34,13 +34,10 @@ if ($otp == $last_record['verification_code']) {
 
     $phpdate = strtotime($last_record['created_time']);
     $created_time = date('Y-m-d H:i:s', $phpdate);
-
     $current_time = date('Y-m-d H:i:s', time());
-
     $time_end = date('Y-m-d H:i:s', strtotime($current_time . ' -3 minutes'));
 
     if ($time_end < $created_time) {
-        echo "success";
 
         //secure query update//
         $query_2 = "UPDATE `user_status` SET `is_verified` = '1', `verified_mobile`=? WHERE `user_id` =?  ";
@@ -49,8 +46,8 @@ if ($otp == $last_record['verification_code']) {
         $stmt_2->execute();
         //secure query update//
 
-        //verify status update....
-        // Database::iud("UPDATE `user_status` SET `is_verified` = '1', `verified_mobile`='" . $tell . "' WHERE `user_id` = '" . $user_id . "'");
+        echo "success";
+
     } else {
         echo "This code has expired. Please click the Resend button to send a new one.";
     }

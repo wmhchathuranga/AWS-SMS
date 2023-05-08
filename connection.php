@@ -10,16 +10,16 @@ class Database{
         }
     }
 
-    public static function iud($q){
-        Database::setUpConnection();
-        Database::$connection->query($q);
-    }
+    // public static function iud($q){
+    //     Database::setUpConnection();
+    //     Database::$connection->query($q);
+    // }
 
-    public static function search($q){
-        Database::setUpConnection();
-        $resultset = Database::$connection->query($q);
-        return $resultset;
-    }
+    // public static function search($q){
+    //     Database::setUpConnection();
+    //     $resultset = Database::$connection->query($q);
+    //     return $resultset;
+    // }
 
 }
 

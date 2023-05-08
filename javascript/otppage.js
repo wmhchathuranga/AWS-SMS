@@ -50,7 +50,7 @@ function reSend(){
       }
     }
   }
-  request.open("POST","reSendProcess.php",true);
+  request.open("POST","sendProcess.php",true);
   request.send(form);
 
   // alert("ok");

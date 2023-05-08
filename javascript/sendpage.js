@@ -61,18 +61,21 @@ function send() {
   var request = new XMLHttpRequest();
   request.onreadystatechange = function () {
     if (request.readyState == 4 && request.status == 200) {
+
+      // alert(request.responseText);
       if (request.responseText == "success") {
         document.getElementById("sendBtn").style.display = "none";
         document.getElementById("loadingBtn").style.display = "block";
+        window.location = "otpPage.php";
         // alert(request.responseText);
 
         setTimeout(locationChange, 1000);
-      } else if ( request.responseText == "You have reached the maximum amount of SMS codes to send. Please try again in 1 hour. If you are still experiencing issues, please contact support.")  {
+      } else if ( request.responseText == "You have reached the maximum amount of SMS codes to send. If you are still experiencing issues, please contact support.")  {
           document.getElementById("sendBtn").style.background = "red";
           document.getElementById("errorMsgRow").style.display = "block";
           document.getElementById("errorMsg").innerHTML = request.responseText;
           // alert(request.responseText);
-        } else if(request.responseText == "This number has been previously used before. You can only have one TimeBucks account. If you think this is an error, please contact support.") {
+        } else if(request.responseText == "You are already verified") {
           document.getElementById("errorMsgRow").style.display = "block";
           document.getElementById("errorMsg").innerHTML = request.responseText;
           // alert(request.responseText);

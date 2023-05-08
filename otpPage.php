@@ -2,6 +2,12 @@
 
 session_start();
 
+if(!isset($_SESSION['tell'])){
+    header('Location:index.php');
+}else{
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -80,3 +86,8 @@ session_start();
 </body>
 
 </html>
+<?php
+
+}
+
+?>
