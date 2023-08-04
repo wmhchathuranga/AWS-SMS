@@ -70,21 +70,21 @@ function send() {
         // alert(request.responseText);
 
         setTimeout(locationChange, 1000);
-      } else if ( request.responseText == "You have reached the maximum amount of SMS codes to send. If you are still experiencing issues, please contact support.")  {
-          document.getElementById("sendBtn").style.background = "red";
-          document.getElementById("errorMsgRow").style.display = "block";
-          document.getElementById("errorMsg").innerHTML = request.responseText;
-          // alert(request.responseText);
-        } else if(request.responseText == "You are already verified") {
-          document.getElementById("errorMsgRow").style.display = "block";
-          document.getElementById("errorMsg").innerHTML = request.responseText;
-          // alert(request.responseText);
-        }else if(request.responseText=="It looks like you signed up to TimeBucks from [United States], but you are trying to verify with a mobile number from ]. You should live in the country that you signed up with. If you think this is wrong, or if you have recently moved countries, please contact support."){
-          document.getElementById("errorMsgRow").style.display = "block";
-          document.getElementById("errorMsg").innerHTML = request.responseText;
-        }
+      } else if (request.responseText == "1") {
+        document.getElementById("sendBtn").style.background = "red";
+        document.getElementById("errorMsgRow").style.display = "block";
+        document.getElementById("errorMsg").innerHTML = "You have reached the maximum amount of SMS codes to send. If you are still experiencing issues, please contact support.";
+        // alert(request.responseText);
+      } else if (request.responseText == "You are already verified") {
+        document.getElementById("errorMsgRow").style.display = "block";
+        document.getElementById("errorMsg").innerHTML = request.responseText;
+        // alert(request.responseText);
+      } else if (request.responseText == "2") {
+        document.getElementById("errorMsgRow").style.display = "block";
+        document.getElementById("errorMsg").innerHTML = "It looks like you signed up to TimeBucks from[United States], but you are trying to verify with a mobile number from ]. You should live in the country that you signed up with.If you think this is wrong, or if you have recently moved countries, please contact support.";
       }
     }
+  }
 
   request.open("POST", "sendProcess.php", true);
   request.send(form);
