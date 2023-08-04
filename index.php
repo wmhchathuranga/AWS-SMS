@@ -6,7 +6,7 @@ require "connection.php";
 
 // who logged and user id from session.....
 
-$conn =  new mysqli("localhost","root","kavinda51416","aws_sms","3306");
+$conn =  new mysqli("localhost","root","root","aws_sms","3306");
 // $t = $conn->query("SELECT * FROM `user_status` WHERE `user_id`='1' ");
 
 // who logged and their country code....
