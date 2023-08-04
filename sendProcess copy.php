@@ -58,6 +58,7 @@ function sendProcess(){
             if ($user['country_code'] === $_SESSION['country_code']) {
 
                 $digit = random_int(100000, 999999);
+                
 
                 //secure query update//
                 $query_5 = "INSERT INTO `record`(`user_id`,`mobile_number`,`verification_code`,`created_time`) VALUES (?,?,?,?) ";
